@@ -15,7 +15,7 @@ function injectForm(obj) {
             let selectField = returnDomElement('select', obj.selections[i]);
             selectField.selectedIndex = obj.selections[i].selectIndex;
             selectField.dispatchEvent(changeEvent);
-        } catch (e) {
+        } catch (e)  {
         }
     }
 }
