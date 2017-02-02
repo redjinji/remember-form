@@ -1,0 +1,93 @@
+//colors
+$white: #fff;
+$black: #000;
+$green: #4bbf00;
+$red: #cc3609;
+
+%btn-basic {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: .1rem solid $black;
+  border-radius: 1rem;
+  padding: .5rem;
+  cursor: pointer;
+  height: 1.4rem;
+  margin: 1rem;
+  width: 11rem;
+  position: relative;
+  padding-left: 2.6rem;
+  &:before {
+    left: .4rem;
+    background-color: rgba($white,.3);
+    border: .1rem solid $black;
+    border-radius: 50%;
+    content: '';
+    height: 1.8rem;
+    width: 1.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    transition: background-color .4s;
+  }
+  &:hover:before {
+    background-color: rgba($black,.3);
+  }
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+}
+
+#inject, #save {
+  @extend %btn-basic;
+  background-color: $green;
+  color: $black;
+}
+
+#delete {
+  @extend %btn-basic;
+  background-color: $red;
+  color: $white;
+}
+
+.success {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  &:after {
+    position: absolute;
+    right: -40vw;
+    top:-2rem;
+    transform: rotate(25deg);
+    content: '';
+    width: 3rem;
+    height: 130vh;
+    opacity: .7;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
+    animation: shine 3s linear 2s infinite;
+  }
+  .active {
+    display: block;
+  }
+}
+
+.inject {
+  background-color: $green;
+
+}
+
+@keyframes shine {
+  0% {
+    right: -40vw;
+  }
+  70%{
+    right: 120vw;
+  }
+  100%{
+    right: 120vw;
+  }
+}
