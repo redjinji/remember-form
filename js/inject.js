@@ -36,7 +36,7 @@ function saveForm() {
             attrObj[attrList[i].name] = attrList[i].nodeValue;
         }
         return attrObj;
-    }
+     }
 
     let inputObj = [];
     let selectObj = [];
