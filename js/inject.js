@@ -53,11 +53,11 @@ function saveForm() {
         selectObj[i].attr = getAttr(selections[i].attributes);
         selectObj[i].selectIndex = selections[i].selectedIndex;
     }
-    let autoFormObj = {};
-    autoFormObj.inputs = inputObj;
-    autoFormObj.selections = selectObj;
-    autoFormObj.func = 'save';
-    autoFormObj.url = document.URL;
-    chrome.runtime.sendMessage({formParam: autoFormObj}, function (response) {
+    let rememberFormObj = {};
+    rememberFormObj.inputs = inputObj;
+    rememberFormObj.selections = selectObj;
+    rememberFormObj.func = 'save';
+    rememberFormObj.url = document.URL;
+    chrome.runtime.sendMessage({formParam: rememberFormObj}, function (response) {
     });
 }
