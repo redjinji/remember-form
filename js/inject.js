@@ -1,5 +1,13 @@
 function injectForm(obj) {
     let changeEvent = new Event('change');
+    for (let i = 0; i < obj.radios.length; i++) {
+        try {
+            let inputField = returnDomElement('input', obj.inputs[i]);
+            inputField.value = obj.inputs[i].value;
+            inputField.dispatchEvent(changeEvent);
+        } catch (e) {
+        }
+    }
     for (let i = 0; i < obj.inputs.length; i++) {
         if (obj.inputs[i].value !== '') {
             try {
@@ -39,11 +47,18 @@ function saveForm() {
      }
 
     let inputObj = [];
+    let radioObj = [];
     let selectObj = [];
     let inputs = document.querySelectorAll('input');
     let selections = document.querySelectorAll('select');
 
     for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].type === 'radio'){
+            radioObj[i] = {};
+            radioObj[i].attr = getAttr(inputs[i].attributes);
+            radioObj[i].checked = inputs[i].checked;
+            continue;
+        }
         inputObj[i] = {};
         inputObj[i].attr = getAttr(inputs[i].attributes);
         inputObj[i].value = inputs[i].value;
@@ -55,6 +70,7 @@ function saveForm() {
     }
     let rememberFormObj = {};
     rememberFormObj.inputs = inputObj;
+    rememberFormObj.radios = radioObj;
     rememberFormObj.selections = selectObj;
     rememberFormObj.func = 'save';
     rememberFormObj.url = document.URL;
