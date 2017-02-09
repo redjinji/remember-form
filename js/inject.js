@@ -1,9 +1,11 @@
+console.log('inject');
 function injectForm(obj) {
+    console.log(obj);
     let changeEvent = new Event('change');
     for (let i = 0; i < obj.radios.length; i++) {
         try {
-            let inputField = returnDomElement('input', obj.inputs[i]);
-            inputField.value = obj.inputs[i].value;
+            let inputField = returnDomElement('input', obj.radios[i]);
+            inputField.checked = obj.radios[i].checked;
             inputField.dispatchEvent(changeEvent);
         } catch (e) {
         }
@@ -52,16 +54,20 @@ function saveForm() {
     let inputs = document.querySelectorAll('input');
     let selections = document.querySelectorAll('select');
 
-    for (let i = 0; i < inputs.length; i++) {
+    // r for counting radio input button
+    // p for counting all kind of text inputs
+    for (let i = 0, r=0,p=0; i < inputs.length; i++) {
         if (inputs[i].type === 'radio'){
-            radioObj[i] = {};
-            radioObj[i].attr = getAttr(inputs[i].attributes);
-            radioObj[i].checked = inputs[i].checked;
+            radioObj[r] = {};
+            radioObj[r].attr = getAttr(inputs[i].attributes);
+            radioObj[r].checked = inputs[i].checked;
+            y++;
             continue;
         }
-        inputObj[i] = {};
-        inputObj[i].attr = getAttr(inputs[i].attributes);
-        inputObj[i].value = inputs[i].value;
+        inputObj[p] = {};
+        inputObj[p].attr = getAttr(inputs[i].attributes);
+        inputObj[p].value = inputs[i].value;
+        p++;
     }
     for (let i = 0; i < selections.length; i++) {
         selectObj[i] = {};
