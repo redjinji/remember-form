@@ -1,4 +1,4 @@
-chrome.runtime.onMessage.addListener(
+chrome.runtime.onMessage.addListener(//get the form and save it
     function (request, sender, sendResponse) {
         if (request.formParam.func === 'save') {
             saveForm(request.formParam);
@@ -7,12 +7,12 @@ chrome.runtime.onMessage.addListener(
         theUrl = theUrl.split('#')[0];
         localStorage.setItem(theUrl, JSON.stringify(request.formParam));
     });
-var inject = document.getElementById('inject');
-inject.addEventListener('click', sendForm);
+/*var inject = document.getElementById('inject');
 var save = document.getElementById('save');
-save.addEventListener('click', bringForm);
 var del = document.getElementById('delete');
-del.addEventListener('click', deleteStorage);
+save.addEventListener('click', bringForm);
+inject.addEventListener('click', sendForm);
+del.addEventListener('click', deleteStorage);*/
 function sendForm() {
     chrome.tabs.getSelected(null, function (tab) {
         let theUrl = tab.url.split('?')[0];

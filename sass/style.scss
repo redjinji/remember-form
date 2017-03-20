@@ -1,0 +1,89 @@
+// global setings
+$body-width: 21rem; // Body width
+$font-family: "Open Sans", serif; // Body font
+
+// colors
+$black: #000;
+$white: #fff;
+$green: #4cbf00;
+$red: #cd3609;
+
+//colorize aria
+$text-color: $black;
+$good-btn-color: $green;
+$danger-btn-color: $red;
+
+// font styling
+$btn-text: 1.6rem; // Button font size
+
+/*----------- HTML Configs------------------------------------------*/
+html {
+  font-size: 10px;
+}
+
+
+body {
+  font-family: $font-family;
+  width: $body-width;
+}
+
+.btn {
+  position: relative;
+  height: 4rem;
+  margin: 1rem 0;
+  padding-left: 4.6rem;
+  text-align: left;
+  outline: none;
+  width: 100%;
+  /*------------ Button content config --------------------------------*/
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 8px;
+    color: $text-color;
+    width: 28px;
+    height: 28px;
+    border: solid 1px $text-color;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, .3);
+
+    /*------------ This is the color for the content on hover -------------*/
+    &:hover {
+      background-color: rgba(0, 0, 0, .3);
+    }
+  }
+}
+
+/*------------- Container Configs -----------------------------------*/
+.btn__wrapper {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+/*------------ This is the config for the buttons --------------------*/
+.btn{
+  background-color: $good-btn-color;
+  color: $text-color;
+  font-size: $btn-text;
+  font-weight: 700;
+  border: solid 1px $text-color;
+  border-radius: 15px;
+  position: relative;
+  line-height: 3rem;
+  cursor: pointer;
+}
+
+
+/*------------ This is the color for the delete Saved Form button -------------*/
+.btn__danger{
+  background-color: $danger-btn-color;
+  color: $white;
+}
+
+
+
