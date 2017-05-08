@@ -1,4 +1,3 @@
-console.log('inject');
 function injectForm(obj) {
     console.log(obj);
     let changeEvent = new Event('change');

@@ -7,12 +7,7 @@ chrome.runtime.onMessage.addListener(//get the form and save it
         theUrl = theUrl.split('#')[0];
         localStorage.setItem(theUrl, JSON.stringify(request.formParam));
     });
-/*var inject = document.getElementById('inject');
-var save = document.getElementById('save');
-var del = document.getElementById('delete');
-save.addEventListener('click', bringForm);
-inject.addEventListener('click', sendForm);
-del.addEventListener('click', deleteStorage);*/
+
 function sendForm() {
     chrome.tabs.getSelected(null, function (tab) {
         let theUrl = tab.url.split('?')[0];
@@ -45,3 +40,6 @@ function deleteStorage() {
         localStorage.removeItem(theUrl);
     });
 }
+document.querySelector('.fn-inject-form').addEventListener('click',sendForm);
+document.querySelector('.fn-save-form').addEventListener('click',bringForm);
+document.querySelector('.fn-delete-saved-form').addEventListener('click',deleteStorage);
