@@ -61,7 +61,7 @@ function saveForm() {
             radioObj[r] = {};
             radioObj[r].attr = getAttr(inputs[i].attributes);
             radioObj[r].checked = inputs[i].checked;
-            y++;
+            r++;
             continue;
         }
         inputObj[p] = {};
